@@ -33,4 +33,4 @@ Boolean, None, Functions
 0b숫자 : 이진수
 0o숫자 : 팔진수
 0x숫자 : 16진수
-
+ddd

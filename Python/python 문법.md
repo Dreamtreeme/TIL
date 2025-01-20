@@ -33,4 +33,15 @@ Boolean, None, Functions
 0b숫자 : 이진수
 0o숫자 : 팔진수
 0x숫자 : 16진수
-ddd
+
+## float 실수 자료형
+
+d = 3.14
+e = -2.7
+
+# 314 * 0.01
+number = 314e-2
+
+# 3.14
+print(number)
+

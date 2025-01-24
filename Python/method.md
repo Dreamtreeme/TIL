@@ -117,7 +117,7 @@ print(new_text)  # Hello-world!
 
 ### 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a8a49879-6cfd-4067-b244-5980cbb53e13/7116a74c-0d2b-4516-b16e-09bfc8432b48/image.png)
+
 
 ```python
 # capitalize
@@ -320,7 +320,6 @@ print(f'a[2]와 b[2]가 같은 객체인가? {a[2] is b[2]}')  #True
 
 ```
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a8a49879-6cfd-4067-b244-5980cbb53e13/01bb5a26-9338-48bc-99ac-8eb00a60db61/image.png)
 
 ### 1차원 리스트는 얕은 복사로 해결 가능하지만
 

@@ -302,7 +302,6 @@ print(c)  # [999, 2, 3]
 print(d)  # [8080, 2, 3]
 ```
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a8a49879-6cfd-4067-b244-5980cbb53e13/c6bc2d9f-d3fd-4223-8340-17129615a546/image.png)
 
 ```python
 # 다차원 리스트
@@ -347,7 +346,7 @@ print(b)  # [1, 2, [3, 100, 5]]
 print(f'a[2]와 b[2]가 같은 객체인가? {a[2] is b[2]}')  # False
 ```
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a8a49879-6cfd-4067-b244-5980cbb53e13/faba8e8c-9b8e-4f90-9400-9f133955766e/image.png)
+
 
 ```python
 # 복잡한 중첩 객체 예시
@@ -372,7 +371,7 @@ print(
 
 ```
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a8a49879-6cfd-4067-b244-5980cbb53e13/b44447f4-9579-4014-b30f-6775a1d83936/image.png)
+
 
 ### 메서드 체이닝
 

@@ -236,6 +236,7 @@ print(my_list.reverse())  #None
 ```
 
 L.sort() - 리스트의 순서를 정렬
+sorted() - 이터러블 객체를 입력받아 순서를 정렬한 리스트 반환
 
 ```python
 # sort

@@ -35,9 +35,12 @@ def colum(mtx):
 def solve():
     matrix=[]
     result=[]
-    for _ in range(3):  # 10개의 행 입력
-        row_input = list(map(int, input().split()))
-        matrix.append(row_input)
+    for _ in range(100):  # 모든 케이스 100*100 이라 했으니 미리 설정해야함
+        matrix.append(list(map(int, input().split()))) # 변수 늘리지 말것
+        # 최댓값을 구하는 것이 목표
+        # 그러므로 최대값 구하는 수식을 생각하며 풀어야함
+    # max_val = -2 ** 31 # 임의의 최솟값(Integer 범위 안에서)
+    # 제약사항 미리 맞춰보기도 함
     result.extend(cross(matrix))
     result.extend(row(matrix))
     result.extend(colum(matrix))

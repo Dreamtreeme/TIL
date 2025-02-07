@@ -13,7 +13,8 @@ for test_case in range(1, T + 1):
         num2 = N*count_num//10
         if num2 ==0:
             count_num+=1
+            count_list_num-=1
     
 
-    result = 0
+    result = count_num
     print(f'#{test_case} {result}')

@@ -1,5 +1,5 @@
 #2개의 함수필요
-
+rd=0
 #대각선 함수
 def cross(mtx):
     cross_total_list=[]
@@ -7,7 +7,7 @@ def cross(mtx):
         total=0
         for j in range(len(mtx[i])):
             if i==j or i+j==len(mtx[i])+1:
-                total+=mtx[i][j]
+                total+=mtx[i][j] #실험ree
                 cross_total_list.append(total)
     return cross_total_list
 

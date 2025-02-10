@@ -1,53 +1,51 @@
-#2개의 함수필요
-rd=0
-#대각선 함수
-def cross(mtx):
-    cross_total_list=[]
-    for i in range(len(mtx)):
-        total=0
-        for j in range(len(mtx[i])):
-            if i==j or i+j==len(mtx[i])+1:
-                total+=mtx[i][j] #실험ree
-                cross_total_list.append(total)
-    return cross_total_list
-
-# 행 함수
-def row(mtx):
-    row_total_list=[]
-    for i in range(len(mtx)):
-        total=0
-        for j in range(len(mtx)):
-            total+=mtx[i][j]
-            row_total_list.append(total)
-    return row_total_list
-
-# 열 함수
-def colum(mtx):
-    colum_total_list=[]
-    for i in range(len(mtx)):
-        total=0
-        for j in range(len(mtx)):
-            total +=mtx[j][i]
-            colum_total_list.append(total)
-    return colum_total_list
-
-#각 함수 해결 함수
-def solve():
-    matrix=[]
-    result=[]
-    for _ in range(100):  # 모든 케이스 100*100 이라 했으니 미리 설정해야함
-        matrix.append(list(map(int, input().split()))) # 변수 늘리지 말것
-        # 최댓값을 구하는 것이 목표
-        # 그러므로 최대값 구하는 수식을 생각하며 풀어야함
-    # max_val = -2 ** 31 # 임의의 최솟값(Integer 범위 안에서)
-    # 제약사항 미리 맞춰보기도 함
-    result.extend(cross(matrix))
-    result.extend(row(matrix))
-    result.extend(colum(matrix))
-    return max(result)
+T = 10
+for _ in range(1,T+1):
+    tc = int(input())
+    ladder = [list(map(int,input().split())) for _ in range(100)]
+    # 사다리 타기 시작
+    # 0행을 검사를 해서 시작점이라면(1이라면) 시작
+    
+    # 아래쪽, 오른쪽, 왼쪽
+    dr = [1, 0, 0]
+    dc = [0, 1, -1]
+    
+    result = 0
+    
+    for i in range(100):
+        if ladder[0][i]: # 시작점 찾음
+            # 현재 위치를 r, c로 저장
+            # 움직이는 방향을 지정 : 0아래쪽, 1오른쪽, 2왼쪽
+            # 현재 위치 + 움직이는 방향에 대한 변화량 더하기
+            # 방향을 바꾸어야 하는 경우가 생기면 방향 바꾸기
+                # 움직이는 방향 : 아래쪽 > 좌 or 우 갈 수 있음
+                #               좌 or 우 > 아래쪽으로 갈 수 있음
+            # 만약에, r이 99라면 멈춰!!
+            # 현재위치
+            r, c = 0, i
+            d = 0
+            while r < 99:
+                # 움직이기 전에 방향을 바꾸는 경우가 있는지 검사
+                # 움직이고 있는 방향에 따라서 방향을 바꾸는 검사가 다름
                 
-T = int(input())
-# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
-for test_case in range(1, T + 1):
-    result=solve()
-    print(f'#{test_case} {result}')
+                if d == 0: # 아래쪽 방향으로 움직이고 있었다면
+                    # 좌, 우 검사 << 양쪽에 0이 있으면 내려가기
+                    if c > 0 and ladder[r][c-1]: # 왼쪽으로 갈 수 있을 때
+                        d = 2
+                    elif c < 99 and ladder[r][c+1]: # 오른쪽으로 갈 수 있을 때
+                        d = 1
+                        
+                else: # 좌 or 우 방향으로 움직이고 있을 떄
+                    if ladder[r+1][c]: # 아래쪽으로 갈 수 있을 때
+                        d = 0
+                        
+                # 현재 움직이는 방향에 대해서 변화량 더하기
+                r += dr[d]
+                c += dc[d]
+                
+            # r이 99가 되면서 반복이 끝난 시점에서 ladder[r][c] == 2 라면,
+            # i가 정답
+            if ladder[r][c] == 2:
+                result = i
+                break # 정답을 찾았으니 끝
+                
+    print(f'#{tc} {result}')

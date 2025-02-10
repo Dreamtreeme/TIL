@@ -1,42 +1,34 @@
-#가로세로 9*9
-# 안에 3*3 스토쿠가 9개 배치
+def check_sudoku(li):
+    for i in range(9):
+        row_count = [0] * 10  # 각 행의 숫자 개수 저장
+        col_count = [0] * 10  # 각 열의 숫자 개수 저장
+        for j in range(9):
+            num_row = li[i][j]
+            num_col = li[j][i]
+
+            if row_count[num_row] > 0 or col_count[num_col] > 0:
+                return 0  # 중복된 숫자 발견
+
+            row_count[num_row] += 1
+            col_count[num_col] += 1
+
+    for i in range(3):
+        for j in range(3):
+            block_count = [0] * 10  # 각 3x3 부분 배열의 숫자 개수 저장
+            for k in range(3):
+                for l in range(3):
+                    num = li[i*3 + k][j*3 + l]
+
+                    if block_count[num] > 0:
+                        return 0  # 중복된 숫자 발견
+
+                    block_count[num] += 1
+
+    return 1
 
 T = int(input())
 
 for test_case in range(1, T + 1):
-    li =[[0]*9 for _ in range(9)]
-    chk_li=[0]*10
-    result =1
-    inli=[[0]*3 for _ in range(3)]
-    for i in range(9):
-    # 입력 한줄씩 받기
-        N= list(map(int, input().split()))
-        chk_li[N[i]] += 1
-        if chk_li[i+1] != 1:
-            result = 0
-            break
-        else:
-            chk_li =[0]*10
-        
-        col_li = li.copy()
-        for j in range(9):
-            li[i][j] = N[j]
-            col_li[i][j] = li[j][i]
-            chk_li[col_li[i][j]] += 1
-        if chk_li[i+1] != 1:
-            result = 0
-            break
-        else:
-            chk_li =[0]*10
-    for k in range(1,4):
-        for l in range(1,4):
-            m=(k-1)*3
-            n=(l-1)*3
-            chk_li[inli[k-1][l-1]] +=1
-            if chk_li[i] != 1:
-                result = 0
-                break
-    
-
+    li = [list(map(int, input().split())) for _ in range(9)]
+    result = check_sudoku(li)
     print(f'#{test_case} {result}')
-

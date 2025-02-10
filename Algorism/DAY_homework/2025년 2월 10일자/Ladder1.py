@@ -1,7 +1,10 @@
+# 핵심풀이
+# 델타를 이용해 방향정하고
+# 정한 방향으로 좌표이동
 T = 10
 for _ in range(1, T + 1):
     test =int(input())
-    ladder = [list(map(int,input().split())) for _ in range(100)]# 100*100인 배열 생성
+    ladder = [list(map(int,input().split())) for _ in range(100)]# 
 
     dr = [0,0,1] # 좌, 우,아래
     dc = [-1,1,0]

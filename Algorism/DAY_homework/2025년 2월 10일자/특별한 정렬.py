@@ -24,3 +24,5 @@ for test_case in range(1, T + 1):
     result = " ".join(map(str,li))
             
     print(f'#{test_case} {result}')
+
+    # 또는 조건 1 조건2 설정후 계산

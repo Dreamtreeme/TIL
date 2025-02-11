@@ -10,9 +10,9 @@ for _ in range(1, T + 1):
     dc = [-1,1,0]
 
     result = 0
-    for i in range(100):
-        if ladder[0][i] :
-            r, c = 0 , i # 시작위치
+    for i in range(100): # 100개의 행 위치 확인
+        if ladder[0][i] : # 어차피 첫번째 위치에 시작점이니
+            r, c = 0 , i # 시작위치 row, colum은 0행 열위치
             d=2
             
             while r < 99 :

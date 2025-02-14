@@ -10,7 +10,6 @@
 sc= int(input())
 s_li= list(map(int,input().split()))
 case = int(input())
-counter=0
 for _ in range(case):
     s, num = list(map(int,input().split()))
     if s==1:# 남자부분

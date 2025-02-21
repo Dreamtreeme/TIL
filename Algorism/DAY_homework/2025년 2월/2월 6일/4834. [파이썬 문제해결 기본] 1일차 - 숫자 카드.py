@@ -41,7 +41,7 @@ for case in range(1,T+1):
     max_count = count[0]
     max_num = 0
     for i in range(1, mav_v+1): # 카운트 인덱스 순회
-        if max_count<count[i]: # 임의의 요소보다 다음요소가 크면
+        if max_count<=count[i]: # 임의의 요소보다 다음요소가 크면
             max_count=count[i] # 요소를 바꿔라
             max_num = i # 그리고 그 인덱스 번호를 넣어라
             

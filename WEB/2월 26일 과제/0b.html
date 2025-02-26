@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 기본 스타일 */
+body {
+  padding: 0;
+  margin: 70px 0; /* 고정된 네비게이션과 푸터를 위한 여백 */
+}
+
+/* 공통 구조 클래스 */
+.fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+.fixed-top {
+  top: 0;
+}
+.fixed-bottom {
+  bottom: 0;
+}
+
+/* 네비게이션 */
+.nav-list {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f1f1f1;
+}
+.nav-item {
+  margin: 0 20px;
+}
+.nav-item a {
+  display: block;
+  line-height: 70px;
+  text-decoration: none;
+  color: black;
+}
+.home {
+  width: 100px;
+  background-color: orangered;
+  text-align: center;
+}
+.home a {
+  color: white;
+}
+
+/* 헤더 */
+.header {
+  text-align: center;
+}
+.bigtitle {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+/* 서브타이틀 섹션 */
+.subtitle-section {
+  text-align: center;
+  background-color: rgb(255, 196, 0);
+  padding: 20px;
+}
+.subbigtitle {
+  margin: 0;
+  font-size: 36px;
+  font-weight: bold;
+  color: #121212;
+}
+.subdescription {
+  color: #454545;
+}
+
+/* 아티클 리스트 */
+.article-list {
+  margin: 40px;
+}
+.card {
+  padding: 20px;
+  margin: 30px 0;
+}
+.card-skin {
+  background-color: #f8f8f8;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, .2);
+  border-radius: 5px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.subtitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #454545;
+}
+.description {
+  padding: 15px;
+  background-color: rgba(255, 213, 127, .3);
+}
+
+/* 푸터 */
+.end {
+  padding: 20px;
+  margin: 0;
+  background-color: olivedrab;
+  color: white;
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+  <!-- 네비게이션 -->
+  <nav class="fixed fixed-top">
+    <ul class="nav-list">
+      <li class="nav-item home"><a class="link" href="">HOME</a></li>
+      <li class="nav-item"><a class="link" href="">Category</a></li>
+      <li class="nav-item"><a class="link" href="">BestSeller</a></li>
+      <li class="nav-item"><a class="link" href="">Recommend</a></li>
+    </ul>
+  </nav>
+
+  <!-- 헤더 -->
+  <header class="header">
+    <h1 class="bigtitle">HGD Magazine</h1>
+  </header>
+
+  <!-- 서브타이틀 섹션 -->
+  <section class="subtitle-section">
+    <h2 class="subbigtitle">Article List</h2>
+    <p class="subdescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui quos optio voluptatem! Nihil saepe molestiae aperiam dolorem in? Autem doloremque consectetur veritatis in beatae rerum aspernatur. Magni, tempore numquam!</p>
+  </section>
+
+  <!-- 아티클 리스트 -->
+  <main class="article-list">
+    <article class="card card-skin">
+      <header class="card-header">
+        <h3 class="title">Article Title</h3>
+        <p class="subtitle">By HGD</p>
+      </header>
+      <hr>
+      <p class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel vitae accusantium blanditiis ullam quisquam voluptas. Aliquid, sapiente, suscipit, exercitationem sed dolore culpa doloremque nobis dignissimos accusamus a deserunt praesentium autem?</p>
+    </article>
+    <!-- 동일한 구조의 article 반복 -->
+    <article class="card card-skin">
+      <header class="card-header">
+        <h3 class="title">Article Title</h3>
+        <p class="subtitle">By HGD</p>
+      </header>
+      <hr>
+      <p class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel vitae accusantium blanditiis ullam quisquam voluptas. Aliquid, sapiente, suscipit, exercitationem sed dolore culpa doloremque nobis dignissimos accusamus a deserunt praesentium autem?</p>
+    </article>
+    <article class="card card-skin">
+      <header class="card-header">
+        <h3 class="title">Article Title</h3>
+        <p class="subtitle">By HGD</p>
+      </header>
+      <hr>
+      <p class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel vitae accusantium blanditiis ullam quisquam voluptas. Aliquid, sapiente, suscipit, exercitationem sed dolore culpa doloremque nobis dignissimos accusamus a deserunt praesentium autem?</p>
+    </article>
+    <article class="card card-skin">
+      <header class="card-header">
+        <h3 class="title">Article Title</h3>
+        <p class="subtitle">By HGD</p>
+      </header>
+      <hr>
+      <p class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel vitae accusantium blanditiis ullam quisquam voluptas. Aliquid, sapiente, suscipit, exercitationem sed dolore culpa doloremque nobis dignissimos accusamus a deserunt praesentium autem?</p>
+    </article>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="fixed fixed-bottom">
+    <p class="end">© 2023 HGD Magazine. All rights reserved.</p>
+  </footer>
+</body>
+</html>

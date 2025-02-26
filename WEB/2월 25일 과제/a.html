@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 자손 결합자 (Descendant Combinator): div p
+     - 'div' 요소의 모든 자손 요소인 'p' 요소를 선택합니다. (직계 자식, 손자, 증손자 등 모든 하위 요소)
+     - 예시에서는 div 요소 내에 있는 모든 <p> 태그에 파란색(blue) 스타일을 적용합니다. */
+    div p {
+      color: blue;
+    } 
+    /* 자식 결합자 (Child Combinator): div > p */
+/*      - 'div' 요소의 바로 아래 직계 자식인 'p' 요소만을 선택합니다. (손자 요소는 선택하지 않음) */
+/*      - 예시에서는 div 요소 바로 아래의 <p> 태그에 빨간색(crimson) 스타일을 적용합니다. */ */
+    div > p {
+      color: crimson;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <p>자식</p>
+    <div>
+      <p>손자</p>
+    </div>
+    <p>자식</p>
+  </div>
+  
+</body>
+</html>

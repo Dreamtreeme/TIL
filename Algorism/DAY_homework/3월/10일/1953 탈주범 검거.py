@@ -31,37 +31,61 @@
 재귀함수는 불가능
 1. 터널의 종류를 딕셔너리로 만든다
 2. BFS 로 접근 따라서 deque를 사용한다
+
 '''
-import sys
 from collections import deque
-sys.stdin = open("input.txt", "r")
-# 델타배열도 미리 만들어둠
-dx = [-1,1,0,0]
-dy = [0,0,-1,1]
 
-def bfs(R,C):
-    dq = deque([(R,C)])
-    visited[R][C] = 1 # 출발점 초기화
+dr = [-1,1,0,0] # 상하좌우
+dc = [0,0,-1,1]
 
-    while dq:
-        new_r, new_c = dq.popleft()
-        if visited[new_r][new_c] == L:
-            break # 시간이 다되면 끝
-        
-types= {# 상 하 좌 우 정보로 전 위치와 현 위치가 맞아야함
-    1: [1,1,1,1],
-    2: [1,1,0,0],
-    3: [0,0,1,1],
-    4: [1,0,0,1],
-    5: [0,1,0,1],
-    6: [0,1,1,0],
-    7: [1,0,1,0],
+types ={
+    1:[1,1,1,1],
+    2:[1,1,0,0],
+    3:[0,0,1,1],
+    4:[1,0,0,1],
+    5:[0,1,0,1],
+    6:[0,1,1,0],
+    7:[1,0,1,0],
 }
+def bfs(R,C):
+    q = deque([(R,C)])
+    visited[R][C]=1
+    while q:
+        nowr, nowc = q.popleft()
+        dirs = types[tunner[nowr][nowc]]
 
-T=int(input())
-for tc in range(1,T+1):
-    N,M,R,C,L = map(int, input().split())
-    tunnel = [list(map(int, input().split())) for _ in range(N)]
+        for i in range(4):
+            if dirs[i]==0:
+                continue
+            new_r = nowr + dr[i]
+            new_c = nowc + dc[i]
+            if not 0<=new_r<N or not 0<=new_c<M:
+                continue
+            if visited[new_r][new_c] :
+                continue
+            if tunner[new_r][new_c] == 0:
+                continue
+
+            new_dirs = types[tunner[new_r][new_c]]
+
+            if i %2 ==0 and new_dirs[i+1]==0:
+                continue
+            if i % 2 ==1 and new_dirs[i-1]==0:
+                continue
+            if visited[nowr][nowc] + 1 > L:
+                continue
+
+            visited[new_r][new_c] = visited[nowr][nowc]+1
+            q.append((new_r,new_c))
+T= int(input())
+for tc in range(1, T+1):
+    N, M, R, C, L = map(int, input().split())
+    tunner = [list(map(int, input().split())) for _ in range(N)]
     visited = [[0]*M for _ in range(N)]
     bfs(R,C)
+    result=0
+    for i in range(N):
+        for j in range(M):
+            if visited[i][j]:
+                result+=1
     print(f'#{tc} {result}')

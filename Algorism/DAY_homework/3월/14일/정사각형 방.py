@@ -40,12 +40,13 @@
 dr = [-1, 1, 0, 0]
 dc = [0, 0, -1, 1]
 
-def solve():
+
+T = int(input())
+for tc in range(1, T + 1):
     N = int(input())
     arr = [list(map(int, input().split())) for _ in range(N)]
     
-    # DP 테이블 초기화: 모든 방은 최소 1개(자기 자신)
-    dp = [[1] * N for _ in range(N)]
+    path = [[1] * N for _ in range(N)]
     
     # 방의 숫자와 위치를 저장
     rooms = [(arr[i][j], i, j) for i in range(N) for j in range(N)]
@@ -58,22 +59,17 @@ def solve():
             ni = i + dr[k]
             nj = j + dc[k]
             if 0 <= ni < N and 0 <= nj < N and arr[ni][nj] == arr[i][j] + 1:
-                dp[i][j] = max(dp[i][j], dp[ni][nj] + 1)
+                path[i][j] = path[ni][nj] + 1
     
     # 최대 경로 길이와 최소 시작 번호 찾기
-    max_dp = 0
+    max_path = 0
     min_start = float('inf')
     for i in range(N):
         for j in range(N):
-            if dp[i][j] > max_dp:
-                max_dp = dp[i][j]
+            if path[i][j] > max_path:
+                max_path = path[i][j]
                 min_start = arr[i][j]
-            elif dp[i][j] == max_dp:
+            elif path[i][j] == max_path:
                 min_start = min(min_start, arr[i][j])
+    print(f'#{tc} {min_start} {max_path}')
     
-    return min_start, max_dp
-
-T = int(input())
-for tc in range(1, T + 1):
-    num, mcount = solve()
-    print(f'#{tc} {num} {mcount}')

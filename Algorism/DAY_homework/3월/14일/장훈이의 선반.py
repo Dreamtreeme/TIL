@@ -23,6 +23,7 @@ def recur(cnt,total_height):
     # 기저조건 가지치기
     # 탑이 더 높은 정답은 필요 없다
     if total_height >= M:
+        answer = min(answer, total_height)
         return
     if cnt == N:
         return

@@ -10,4 +10,4 @@ for i in range(1<<len(friend)):
             result.append(friend[j])
     if len(result)>=2:
         cnt+=1
-print(cnt)
+    print(result)

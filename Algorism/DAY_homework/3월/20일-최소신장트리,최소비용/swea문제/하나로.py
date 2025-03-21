@@ -1,4 +1,4 @@
-
+# 최소의 간선수 or 최소비용 => MST문제
 def kruskal(node):
     def find_set(x):
         if x == parents[x]:

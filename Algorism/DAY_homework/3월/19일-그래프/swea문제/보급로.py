@@ -1,36 +1,33 @@
 import heapq
-dr = [1,-1,0,0]
-dc = [0,0,1,-1]
 
+dy = [1, -1, 0, 0]
+dx = [0, 0, 1, -1]
 
-def dijkstra():
-  global visited, N, board
-  hq = []
-  heapq.heappush(hq,(board[0][0], 0 , 0))
-  
-  while hq:
-    weight, r, c = heapq.heappop(hq)
+def dijkstra(sy, sx, gy, gx, board, N):
+    hq = []
+    heapq.heappush(hq, (0, sy, sx))  # (누적 비용, y, x)
+    visited = [[0] * N for _ in range(N)]
+    visited[sy][sx] = 1  # 시작점 방문 처리
 
-    if r==N-1 and c==N-1:
-      return weight
-    
-    
-    for k in range(4):
-      nr = r+dr[k]
-      nc = c+dc[k]
-      if not (0<=nr<N) or not (0<=nc<N):
-        continue
-      if visited[nr][nc]:
-        continue
-      visited[nr][nc]=1
-      heapq.heappush(hq, (board[nr][nc]+weight, nr, nc))
+    while hq:
+        weight, ty, tx = heapq.heappop(hq)
 
-# 입력값부터 넣어보기
+        # 도착하면 최단 거리 반환
+        if ty == gy and tx == gx:
+            return weight
+
+        for i in range(4):
+            ny, nx = ty + dy[i], tx + dx[i]
+
+            if 0 <= ny < N and 0 <= nx < N and not visited[ny][nx]:
+                visited[ny][nx] = 1  # 방문 처리
+                heapq.heappush(hq, (weight + board[ny][nx], ny, nx))
+
+# 입력값 처리
 T = int(input())
 
-for tc in range(1,T+1):
-  N = int(input())
-  board = [list(map(int,input()))for _ in range(N)]
-  visited = [[0]*N for _ in range(N)]
-  result = dijkstra()
-  print(f'#{tc} {result}')
+for tc in range(1, T + 1):
+    N = int(input())
+    board = [list(map(int, input())) for _ in range(N)]
+    result = dijkstra(0, 0, N - 1, N - 1, board, N)
+    print(f'#{tc} {result}')

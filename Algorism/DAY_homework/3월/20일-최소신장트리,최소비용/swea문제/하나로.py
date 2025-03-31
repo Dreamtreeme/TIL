@@ -20,8 +20,8 @@ def kruskal(node):
     # 총 해저터널의 갯수는 N(N-1)/2 임
     # 왜냐하면 첫번째에서 n-1개 두번째에서 n-2개...마지막 섬에선 1개만 안겹치는 경로이기 때문
     edges=[]
-    for start_node in range(N):
-        for end_node in range(start_node+1,N):
+    for start_node in range(node):
+        for end_node in range(start_node+1,node):
             eco_fee = E*(((X_list[end_node]-X_list[start_node])**2)+((Y_list[end_node]-Y_list[start_node])**2))
             edges.append((start_node,end_node,eco_fee))
     

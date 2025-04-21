@@ -1,0 +1,64 @@
+from collections import deque
+def bfs(maze, start_y, start_x, N, M):
+    # 상우좌하
+    dr = [-1,0,1,0]
+    dc = [0,1,0,-1]
+
+    # 3차원 방문 배열: [r][c][key_state]
+    visited = [[[False] * (1<<6) for _ in range(M)] for _ in range(N)]
+
+    # 큐 초기화: (r, c, key_state, distance)
+    queue = deque([(start_y, start_x, 0, 0)])
+    visited[start_y][start_x][0] = True
+
+    while queue:
+        r, c, keys, dist = queue.popleft()
+
+        # 출구 도착
+        if maze[r][c] == '1':
+            return dist
+        
+        for i in range(4):
+            nr, nc = r+dr[i], c+dc[i]
+
+            # 미로 범위 내이고 벽이 아닌 경우
+            if 0 <= nr < N and 0<= nc < M and maze[nr][nc] !='#':
+                cell = maze[nr][nc]
+                new_keys = keys
+
+                # 문인 경우 (A-F)
+                if 'A' <= cell <= 'F':
+                    # 해당 열쇠가 없으면 통과 불가
+                    door_bit = ord(cell)- ord('A')
+                    if not (keys & (1<<door_bit)):
+                        continue
+
+                # 열쇠인 경우 (a~f)
+                elif 'a' <= cell <= 'f':
+                    key_bit = ord(cell) - ord('a')
+                    # 열쇠 추가 OR 연산을 통해 비어있는 이진수에 값을 추가
+                    new_keys = keys | (1<<key_bit)
+
+                # 이 상태로 방문한 적이 없으면 큐에 추가
+                if not visited[nr][nc][new_keys]:
+                    visited[nr][nc][new_keys] = True
+                    queue.append((nr, nc, new_keys, dist+1))
+    
+    # 출구에 도달할 수 없음
+    return -1
+
+def solve():
+    N,M = map(int, input().split())
+    maze = []
+    start_y, start_x = -1, -1
+
+    # 미로 입력 시작점 찾기
+    for i in range(N):
+        row = input().strip()
+        maze.append(row)
+        if '0' in row:
+            start_x, start_y = row.index('0'), i
+    
+    return bfs(maze, start_y,start_x,N,M)
+
+print(solve())

@@ -1,0 +1,27 @@
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+pillars = sorted([tuple(map(int, input().split())) for _ in range(N)])
+
+max_height = max(p[1] for p in pillars)
+max_pillars = [p for p in pillars if p[1] == max_height]
+left_max, right_max = min(max_pillars)[0], max(max_pillars)[0]
+
+area = max_height * (right_max - left_max + 1)
+
+current_max = 0
+for i in range(N):
+    if pillars[i][0] >= left_max:
+        break
+    current_max = max(current_max, pillars[i][1])
+    area += current_max * (pillars[i + 1][0] - pillars[i][0])
+
+current_max = 0
+for i in range(N - 1, -1, -1):
+    if pillars[i][0] <= right_max:
+        break
+    current_max = max(current_max, pillars[i][1])
+    area += current_max * (pillars[i][0] - pillars[i - 1][0])
+
+print(area)
